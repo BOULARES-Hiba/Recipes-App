@@ -16,7 +16,7 @@ const NavComponent = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search recipes..."
-            className="shadow-lg shadow-pink-100/50 flex-grow sm:flex-grow-0 border-2 outline-none rounded-full border-pink-300  p-2 sm:w-64 w-full"
+            className="shadow-lg shadow-pink-100/50 flex-grow sm:flex-grow-0 border-2 outline-none rounded-full border-pink-300  py-2 pl-5 sm:w-64 w-full"
           />
           <button className="ml-2 py-2 px-4 rounded-full bg-pink-500 hover:bg-pink-600 text-white text-sm font-medium">
             Search

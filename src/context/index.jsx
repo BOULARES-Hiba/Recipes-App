@@ -8,7 +8,7 @@ export default function GlobalState({children}) {
    const [err, setErr] = useState(null)
    const [recipes ,setRecipes] = useState([])
    const [recipe, setRecipe] = useState(null)
-   const [favorites ,setFavorites] = useState([])
+   const [favorites ,setFavorites] = useState(JSON.parse(localStorage.getItem('list')) || []);
   async function handleSubmit(event) {
       event.preventDefault();
          try {
@@ -39,6 +39,7 @@ export default function GlobalState({children}) {
          copy.push(recipe)
       }
       setFavorites(copy)
+      localStorage.setItem('list', JSON.stringify(copy)); 
    }
    
    return (
