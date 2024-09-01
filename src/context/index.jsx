@@ -7,7 +7,8 @@ export default function GlobalState({children}) {
    const [loading, setLoading] = useState(null)
    const [err, setErr] = useState(null)
    const [recipes ,setRecipes] = useState([])
-   const[recipe, setRecipe] = useState(null)
+   const [recipe, setRecipe] = useState(null)
+   const [favorites ,setFavorites] = useState([])
   async function handleSubmit(event) {
       event.preventDefault();
          try {
@@ -26,9 +27,22 @@ export default function GlobalState({children}) {
          finally {
             setLoading(false)
          }
+   }
+   
+   function changeFavorites(recipe) {
+      const copy = [...favorites]
+      const index = favorites.findIndex(item => item.id === recipe.id)
+      if (index !== -1) {
+           copy.splice(index,1)
+        }
+      else {
+         copy.push(recipe)
       }
+      setFavorites(copy)
+   }
+   
    return (
-      <GlobleContext.Provider value={{search, setSearch ,handleSubmit , loading, err , recipes ,recipe, setRecipe}}>
+      <GlobleContext.Provider value={{search, setSearch ,handleSubmit , loading, err , recipes ,recipe, setRecipe , favorites ,changeFavorites}}>
          {children}
       </GlobleContext.Provider>
    )
