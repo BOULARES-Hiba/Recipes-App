@@ -9,14 +9,19 @@ import Favorites from "./pages/favorites";
 import Details from "./pages/details";
 import NavBar from "./layouts/navBar";
 import GlobalState from "./context";
+import OtherNav from "./layouts/detailsFavNav";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<NavBar />}>
-        <Route index element={<HomePage />} />
-        <Route path="/details/:id" element={<Details />} />
-        <Route path="/favorites" element={<Favorites />} />
-      </Route>
+      <>
+        <Route path="/" element={<NavBar />}>
+          <Route index element={<HomePage />} />
+        </Route>
+        <Route element={<OtherNav />}>
+          <Route path="/details/:id" element={<Details />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Route>
+      </>
     )
   );
   return (
